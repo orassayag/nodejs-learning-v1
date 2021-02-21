@@ -1,28 +1,37 @@
-# Client
+# Server
 
-Built in November 2020. Workflow of the 'Node.js: The Complete Guide to Build RESTful APIs (2018)' course by Mosh Hamedani.
+Built in November 2018. First workflow of the 'Node.js: The Complete Guide to Build RESTful APIs (2018)' course by Mosh Hamedani.
 
-# Basic API routes example
+## Getting Started
 
-Next.js ships with [API routes](https://nextjs.org/docs/api-routes/introduction) which provides an easy solution to build your own `API`. This example shows how to create multiple `API` endpoints with serverless functions, which can execute independently.
+Clone the application to your computer.
+Steps to view the solution:
+1. Open server application on IDE (I use VSCode).
+2. Terminal: npm i
+3. Terminal: npm start
 
-## Deploy your own
+READ THE FOLLOWING SETTINGS BEFORE YOU BEGIN:
 
-Deploy the example using [Vercel](https://vercel.com):
+-Instructions & How to use:
+In terminal: npm start
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/api-routes)
+Happy testing! :)
 
-## How to use
+### Prerequisites
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+You'll need to install VSCode, Node, and clone the application, run npm i.
 
-```bash
-npx create-next-app --example api-routes api-routes-app
-# or
-yarn create next-app --example api-routes api-routes-app
-```
+## Built With
 
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+* [Node.JS](https://nodejs.org/en/) - The web framework used - Server side.
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Author
 
