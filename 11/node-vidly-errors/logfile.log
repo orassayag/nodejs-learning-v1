@@ -1,0 +1,9 @@
+{"level":"info","message":"Connected to MongoDB...","timestamp":"2018-07-15T05:07:15.440Z"}
+{"level":"info","message":"Connected to MongoDB...","timestamp":"2018-07-15T05:08:03.666Z"}
+{"message":"sdfs","stack":"Error: sdfs\n    at Timeout.setTimeout [as _onTimeout] (C:\\Or\\Web\\NodejsLearning\\11\\NodeVidlyErrors\\startup\\config.js:8:15)\n    at ontimeout (timers.js:498:11)\n    at tryOnTimeout (timers.js:323:5)\n    at Timer.listOnTimeout (timers.js:290:5)","level":"error","timestamp":"2018-07-15T05:08:05.629Z"}
+{"level":"info","message":"Connected to MongoDB...","timestamp":"2018-07-15T05:08:21.165Z"}
+{"message":"FATAL ERROR: jwtPrivateKey is undefined.","stack":"Error: FATAL ERROR: jwtPrivateKey is undefined.\n    at Timeout.setTimeout [as _onTimeout] (C:\\Or\\Web\\NodejsLearning\\11\\NodeVidlyErrors\\startup\\config.js:9:19)\n    at ontimeout (timers.js:498:11)\n    at tryOnTimeout (timers.js:323:5)\n    at Timer.listOnTimeout (timers.js:290:5)","level":"error","timestamp":"2018-07-15T05:08:23.132Z"}
+{"level":"info","message":"Connected to MongoDB...","timestamp":"2018-07-15T05:08:49.644Z"}
+{"message":"FATAL ERROR: jwtPrivateKey is undefined.","stack":"Error: FATAL ERROR: jwtPrivateKey is undefined.\n    at Timeout.setTimeout [as _onTimeout] (C:\\Or\\Web\\NodejsLearning\\11\\NodeVidlyErrors\\startup\\config.js:9:19)\n    at ontimeout (timers.js:498:11)\n    at tryOnTimeout (timers.js:323:5)\n    at Timer.listOnTimeout (timers.js:290:5)","level":"error","timestamp":"2018-07-15T05:08:50.609Z"}
+{"level":"info","message":"Listening to port 3000...","timestamp":"2018-07-15T05:31:56.974Z"}
+{"level":"info","message":"Connected to MongoDB...","timestamp":"2018-07-15T05:31:58.010Z"}
