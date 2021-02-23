@@ -1,4 +1,4 @@
-# Server
+# Node.js Learning V1
 
 Built in November 2018. First workflow of the 'Node.js: The Complete Guide to Build RESTful APIs (2018)' course by Mosh Hamedani.
 
@@ -8,7 +8,7 @@ Clone the application to your computer.
 Steps to view the solution:
 1. Open server application on IDE (I use VSCode).
 2. Terminal: npm i
-3. Terminal: npm start
+3. In terminal: npm start
 
 READ THE FOLLOWING SETTINGS BEFORE YOU BEGIN:
 
