@@ -4,14 +4,14 @@ const {
 } = require('../../models/user');
 
 let server;
-// Integration tests for auth middlewere.
-describe('auth middlewere', () => {
+// Integration tests for auth middleware.
+describe('auth middleware', () => {
     // Create the server before each test.
     /*     beforeEach(() => {
             server = require('../../index');
         });
 
-        // Close the server after each test
+        // Close the server after each test.
         afterEach(() => {
             if (server) {
                 server.close();
@@ -34,7 +34,7 @@ describe('auth middlewere', () => {
         token = new User().generateAuthToken();
     });
 
-    it('should return 401 if no token was provided', async () => {
+    it('should return 401 if no token was provided.', async () => {
         // Set the token to be empty.
         token = '';
 

@@ -3,7 +3,7 @@ const {
     ValidateResult
 } = require('../helpers/validations');
 
-// Create customer schema
+// Create a customer schema.
 const Customer = mongoose.model('Customer', new mongoose.Schema({
     isGold: {
         type: Boolean,
@@ -26,21 +26,21 @@ const Customer = mongoose.model('Customer', new mongoose.Schema({
     }
 }));
 
-// Validate the customer id
+// Validate the customer Id.
 const validateCustomerId = (id) => {
     if (!id) {
-        return new ValidateResult(false, 'No id sent.');
+        return new ValidateResult(false, 'No Id sent.');
     }
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return new ValidateResult(false, `Invalid customer id ${id}.`);
+        return new ValidateResult(false, `Invalid customer Id ${id}.`);
     }
     return new ValidateResult(true, null);
 }
 
-// Validate the customer parameters
+// Validate the customer parameters.
 const validateCustomer = (customer) => {
-    // Validate isGold
+    // Validate isGold.
     if (!customer.isGold) {
         return new ValidateResult(false, 'Parameter isGold is required.');
     }
@@ -50,7 +50,7 @@ const validateCustomer = (customer) => {
         return new ValidateResult(false, 'Invalid parameter isGold.');
     }
 
-    // Validate name
+    // Validate name.
     if (!customer.name) {
         return new ValidateResult(false, 'Parameter name is required.');
     }
@@ -59,7 +59,7 @@ const validateCustomer = (customer) => {
         return new ValidateResult(false, 'Invalid parameter name (Must be at least 6 and maximum 50 characters length).');
     }
 
-    // Validate phone
+    // Validate phone.
     if (!customer.phone) {
         return new ValidateResult(false, 'Parameter phone is required.');
     }

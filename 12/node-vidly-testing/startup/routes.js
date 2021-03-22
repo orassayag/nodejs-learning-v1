@@ -7,9 +7,9 @@ const rentals = require('../routes/rentals');
 const users = require('../routes/users');
 const auth = require('../routes/auth');
 
-// Define all routes of the API and error handling middleware
+// Define all routes of the API and error handling middleware.
 module.exports = (app) => {
-    // Routes
+    // Routes.
     app.use(express.json());
     app.use('/api/genres', genres);
     app.use('/api/customers', customers);
@@ -18,6 +18,6 @@ module.exports = (app) => {
     app.use('/api/users', users);
     app.use('/api/auth', auth);
 
-    // Error handling middleware
+    // Error handling middleware.
     app.use(error);
 };

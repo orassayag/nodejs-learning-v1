@@ -1,34 +1,34 @@
 const db = require('./db');
 const mail = require('./mail');
 
-// Testing numbers
+// Testing numbers.
 module.exports.absolute = function (number) {
   return number >= 0 ? number : -number;
 }
 
-// Testing strings
+// Testing strings.
 module.exports.greet = function (name) {
   return 'Welcome ' + name + '!';
 }
 
-// Testing arrays
+// Testing arrays.
 module.exports.getCurrencies = function () {
   return ['USD', 'AUD', 'EUR'];
 }
 
-// Testing objects
+// Testing objects.
 module.exports.getProduct = function (productId) {
   return { id: productId, price: 10, category: 'a' };
 }
 
-// Testing exceptions
+// Testing exceptions.
 module.exports.registerUser = function (username) {
   if (!username) throw new Error('Username is required.');
 
   return { id: new Date().getTime(), username: username };
 }
 
-// Mock functions
+// Mock functions.
 module.exports.applyDiscount = function (order) {
   const customer = db.getCustomerSync(order.customerId);
 
@@ -36,7 +36,7 @@ module.exports.applyDiscount = function (order) {
     order.totalPrice *= 0.9;
 }
 
-// Mock functions
+// Mock functions.
 module.exports.notifyCustomer = function (order) {
   const customer = db.getCustomerSync(order.customerId);
 

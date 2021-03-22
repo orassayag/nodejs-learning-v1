@@ -12,16 +12,16 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Create customer and return it.
+// Create a customer and return it.
 router.post('/', async (req, res) => {
 
-    //If invalid customer parameters, return 400 Bad Request.
+    // If invalid customer parameters, return 400 - Bad Request.
     const validateCustomerResult = validateRequestCustomer(req);
     if (!validateCustomerResult.isValid) {
         return res.status(400).send(validateCustomerResult.errorMessage);
     }
 
-    // Create new customer.
+    // Create a new customer.
     let customer;
     try {
         customer = await new Customer({
@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
         console.error('Failed to create the customer.', err);
     }
 
-    // Validate customer saved on the database, if not, return 400 Bad Request.
+    // Validate customer saved on the database, if not, return 400 - Bad Request.
     if (!customer) {
         return res.status(400).send('Failed to save the customer on the database.');
     }
@@ -45,13 +45,13 @@ router.post('/', async (req, res) => {
 // Update customer and return it.
 router.put('/:id', async (req, res) => {
 
-    //If invalid customer id parameter, return 400 Bad Request.
+    // If invalid customer Id parameter, return 400 - Bad Request.
     const validateIdResult = validateRequestId(req);
     if (!validateIdResult.isValid) {
         return res.status(400).send(validateIdResult.errorMessage);
     }
 
-    //If invalid customer parameters, return 400 Bad Request.
+    // If invalid customer parameters, return 400 - Bad Request.
     const validateCustomerResult = validateRequestCustomer(req);
     if (!validateCustomerResult.isValid) {
         return res.status(400).send(validateCustomerResult.errorMessage);
@@ -68,12 +68,12 @@ router.put('/:id', async (req, res) => {
             new: true
         });
     } catch (err) {
-        console.error(`Failed to update the customer (id: ${req.params.id.trim()}).`, err);
+        console.error(`Failed to update the customer (Id: ${req.params.id.trim()}).`, err);
     }
 
-    // Validate customer saved on the database, if not, return 400 Bad Request.
+    // Validate customer saved on the database, if not, return 400 - Bad Request.
     if (!customer) {
-        return res.status(400).send(`Failed to update the customer (id: ${req.params.id.trim()}) on the database.`);
+        return res.status(400).send(`Failed to update the customer (Id: ${req.params.id.trim()}) on the database.`);
     }
 
     // Return updated customer.
@@ -83,7 +83,7 @@ router.put('/:id', async (req, res) => {
 // Delete customer and return it.
 router.delete('/:id', async (req, res) => {
 
-    //If invalid customer id parameter, return 400 Bad Request.
+    // If invalid customer Id parameter, return 400 - Bad Request.
     const validateIdResult = validateRequestId(req);
     if (!validateIdResult.isValid) {
         return res.status(400).send(validateIdResult.errorMessage);
@@ -94,45 +94,45 @@ router.delete('/:id', async (req, res) => {
     try {
         customer = await Customer.findByIdAndRemove(req.params.id.trim());
     } catch (err) {
-        console.error(`Failed to delete the customer (id: ${req.params.id.trim()}).`, err);
+        console.error(`Failed to delete the customer (Id: ${req.params.id.trim()}).`, err);
     }
 
-    // Validate customer deleted from the database, if not, return 400 Bad Request.
+    // Validate customer deleted from the database, if not, return 400 - Bad Request.
     if (!customer) {
-        return res.status(400).send(`Failed to delete the customer (id: ${req.params.id.trim()}) from the database.`);
+        return res.status(400).send(`Failed to delete the customer (Id: ${req.params.id.trim()}) from the database.`);
     }
 
     // Return deleted customer.
     return res.send(customer);
 });
 
-// Get specific customer by id and return it.
+// Get a specific customer by Id and return it.
 router.get('/:id', async (req, res) => {
 
-    //If invalid customer id parameter, return 400 Bad Request.
+    // If invalid customer Id parameter, return 400 - Bad Request.
     const validateIdResult = validateRequestId(req);
     if (!validateIdResult.isValid) {
         return res.status(400).send(validateIdResult.errorMessage);
     }
 
-    // Get the customer by id.
+    // Get the customer by Id.
     let customer;
     try {
         customer = await Customer.findById(req.params.id.trim());
     } catch (err) {
-        console.error(`Failed to get the customer (id: ${req.params.id.trim()}).`, err);
+        console.error(`Failed to get the customer (Id: ${req.params.id.trim()}).`, err);
     }
 
-    // Validate customer from the database, if not exists, return 404 Not Found.
+    // Validate customer from the database, if not exists, return 404 - Not Found.
     if (!customer) {
-        return res.status(404).send(`Failed to get the customer (id: ${req.params.id.trim()}) from the database.`);
+        return res.status(404).send(`Failed to get the customer (Id: ${req.params.id.trim()}) from the database.`);
     }
 
     // Return customer.
     return res.send(customer);
 });
 
-// Validate that the request id is not empty and the request id parameter.
+// Validate that the request Id is not empty and the request Id parameter.
 const validateRequestId = (req) => {
     if (!req) {
         return new ValidateResult(false, 'No request object.');

@@ -1,4 +1,3 @@
-
 module.exports.fizzBuzz = function (input) {
   if (typeof input !== 'number')
     throw new Error('Input should be a number.');

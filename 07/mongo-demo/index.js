@@ -106,7 +106,7 @@ const getCourses = async () => {
 // createCourse();
 
 /* const updateCourse = async (id) => {
-    // Approach: Query first
+    // Approach: Query first.
    const course =  await Course.findById(id);
    if (!course) {
        return;
@@ -121,7 +121,7 @@ const getCourses = async () => {
    }).save();
    console.log(newCourse);
 
-    // Approach: Update first
+    // Approach: Update first.
 
     const result =  await Course.update({ _id: id }, {
         $set: {

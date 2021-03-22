@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const config = require(`../config/config.${(process.env.NODE_ENV || 'development')}.json`);
 const secrets = require(`../secrets/secrets.${(process.env.NODE_ENV || 'development')}.json`);
 
-// Create the schema.
+// Create a user schema.
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
     isAdmin: Boolean
 });
 
-// Add generate token method specific for the user model class.
+// Add a generated token method specific for the user model class.
 userSchema.methods.generateAuthToken = function () {
     return jwt.sign({
         _id: this._id,
@@ -43,12 +43,12 @@ userSchema.methods.generateAuthToken = function () {
     });
 };
 
-// Generate instance of user with the schema.
+// Generate instances of the user with the schema.
 const User = mongoose.model('User', userSchema);
 
-// Validate the user parameters
+// Validate the user parameters.
 const validateUser = (user) => {
-    // Validate name
+    // Validate name.
     if (!user.name) {
         return new ValidateResult(false, 'Parameter name is required.');
     }
@@ -57,13 +57,13 @@ const validateUser = (user) => {
         return new ValidateResult(false, 'Invalid parameter name (Must be at least 5 and maximum 100 characters length).');
     }
 
-    // Validate email
+    // Validate email.
     const isValidEmail = validateUserEmail(user.email);
     if (!isValidEmail.isValid) {
         return isValidEmail;
     }
 
-    // Validate password
+    // Validate password.
     const isValidPassword = validateUserPassword(user.password);
     if (!isValidPassword.isValid) {
         return isValidPassword;
@@ -73,7 +73,7 @@ const validateUser = (user) => {
 };
 
 const validateUserEmail = (email) => {
-    // Validate email
+    // Validate email.
     if (!email) {
         return new ValidateResult(false, 'Parameter email is required.');
     }
@@ -90,7 +90,7 @@ const validateUserEmail = (email) => {
 };
 
 const validateUserPassword = (password) => {
-    // Validate password
+    // Validate password.
     if (!password) {
         return new ValidateResult(false, 'Parameter password is required.');
     }

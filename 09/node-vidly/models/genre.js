@@ -3,7 +3,7 @@ const {
     ValidateResult
 } = require('../helpers/validations');
 
-// Create the schema
+// Create a genre schema.
 const Genre = mongoose.model('Genre', new mongoose.Schema({
     name: {
         type: String,
@@ -14,17 +14,17 @@ const Genre = mongoose.model('Genre', new mongoose.Schema({
     }
 }));
 
-// Validate the genre id
+// Validate the genre Id.
 const validateGenreId = (id) => {
     if (!id) {
-        return new ValidateResult(false, 'No id sent.');
+        return new ValidateResult(false, 'No Id sent.');
     }
     return new ValidateResult(true, null);
 }
 
-// Validate the genre parameters
+// Validate the genre parameters.
 const validateGenre = (genre) => {
-    // Validate name
+    // Validate name.
     if (!genre.name) {
         return new ValidateResult(false, 'Parameter name is required.');
     }

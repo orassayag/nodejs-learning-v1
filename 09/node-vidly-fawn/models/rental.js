@@ -3,7 +3,7 @@ const {
     ValidateResult
 } = require('../helpers/validations');
 
-// Create the schema
+// Create a rental schema.
 const Rental = mongoose.model('Rental', new mongoose.Schema({
     customer: {
         type: new mongoose.Schema({
@@ -58,14 +58,14 @@ const Rental = mongoose.model('Rental', new mongoose.Schema({
     }
 }));
 
-// Validate the rental parameters
+// Validate the rental parameters.
 const validateRental = (rental) => {
-    // Validate customerId
+    // Validate customerId.
     if (!rental.customerId) {
         return new ValidateResult(false, 'Parameter customerId is required.');
     }
 
-    // Validate movieId
+    // Validate movieId.
     if (!rental.movieId) {
         return new ValidateResult(false, 'Parameter movieId is required.');
     }

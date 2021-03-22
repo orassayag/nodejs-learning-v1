@@ -1,7 +1,6 @@
+// Trade off between query performance vs consistency.
 
-// Trade off between query performance vs consistency
-
-// Using References (Normalization) -> CONSISTENCY
+// Using References (Normalization) -> CONSISTENCY.
 
 let author = {
     name: 'mosh'
@@ -11,7 +10,7 @@ let course = {
     author: 'id'
 };
 
-// Using Embedded Documents (Denormalization) -> PERFORMANCE
+// Using Embedded Documents (Denormalization) -> PERFORMANCE.
 
 let course = {
     author: {
@@ -19,10 +18,10 @@ let course = {
     }
 };
 
-// Hybrid
+// Hybrid.
 let author = {
     name: 'Mosh',
-    // 50 other properties
+    // 50 other properties.
 };
 
 let course = {

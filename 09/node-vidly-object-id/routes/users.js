@@ -6,25 +6,25 @@ const {
 const express = require('express');
 const router = express.Router();
 
-// Create user and return it.
+// Create a user and return it.
 router.post('/', async (req, res) => {
 
-    // If invalid rental parameters, return 400 Bad Request.
+    // If invalid rental parameters, return 400 - Bad Request.
     const validateResult = validateRequestUser(req);
     if (!validateResult.isValid) {
         return res.status(400).send(validateResult.errorMessage);
     }
 
-    // Check if not exists already with specific email on the database.
+    // Check if not exists already with a specific email on the database.
     let existsUser;
     try {
         existsUser = await User.findOne({
             email: req.body.email.trim()
         });
     } catch (err) {
-        // If exception occurred, return 500 Internal Server Error.
-        console.error('Failed to create user.', err);
-        return res.status(500).send('Failed to create user.');
+        // If an exception occurred, return 500 - Internal Server Error.
+        console.error('Failed to create a user.', err);
+        return res.status(500).send('Failed to create a user.');
     }
 
     if (existsUser) {
@@ -40,12 +40,12 @@ router.post('/', async (req, res) => {
             password: req.body.password.trim()
         }).save();
     } catch (err) {
-        // If exception occurred, return 500 Internal Server Error.
-        console.error('Failed to create user.', err);
-        return res.status(500).send('Failed to create user.');
+        // If an exception occurred, return 500 - Internal Server Error.
+        console.error('Failed to create a user.', err);
+        return res.status(500).send('Failed to create a user.');
     }
 
-    // Validate user saved on the database, if not, return 400 Bad Request.
+    // Validate user saved on the database, if not, return 400 - Bad Request.
     if (!user) {
         return res.status(400).send('Failed to save the user on the database.');
     }

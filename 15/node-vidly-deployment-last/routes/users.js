@@ -12,42 +12,42 @@ router.get('/me', auth, async (req, res) => {
         return res.status(500).send(`Failed to get user from token.`);
     }
 
-    // Get the user by id without the password.
+    // Get the user by Id without the password.
     let user;
     try {
         user = await User.findById(req.user._id).select('-password -__v');
     } catch (err) {
-        console.error(`Failed to get the user (id: ${req.user._id}).`, err);
+        console.error(`Failed to get the user (Id: ${req.user._id}).`, err);
     }
 
-    // Validate user from the database, if not exists, return 404 Not Found.
+    // Validate user from the database, if not exists, return 404 - Not Found.
     if (!user) {
-        return res.status(404).send(`Failed to get the user (id: ${req.user._id}) from the database.`);
+        return res.status(404).send(`Failed to get the user (Id: ${req.user._id}) from the database.`);
     }
 
     // Return user relevant properties.
     return res.send(user);
 });
 
-// Create user and return it.
+// Create a user and return it.
 router.post('/', async (req, res) => {
 
-    // If invalid rental parameters, return 400 Bad Request.
+    // If invalid rental parameters, return 400 - Bad Request.
     const validateResult = validateRequestUser(req);
     if (!validateResult.isValid) {
         return res.status(400).send(validateResult.errorMessage);
     }
 
-    // Check if not exists already with specific email on the database.
+    // Check if not exists already with a specific email on the database.
     let existsUser;
     try {
         existsUser = await User.findOne({
             email: req.body.email.trim()
         });
     } catch (err) {
-        // If exception occurred, return 500 Internal Server Error.
-        console.error('Failed to create user.', err);
-        return res.status(500).send('Failed to create user.');
+        // If exception occurred, return 500 - Internal Server Error.
+        console.error('Failed to create a user.', err);
+        return res.status(500).send('Failed to create a user.');
     }
 
     if (existsUser) {
@@ -61,9 +61,9 @@ router.post('/', async (req, res) => {
         let salt = await bcrypt.genSalt(10);
         userPassword = await bcrypt.hash(req.body.password.trim(), salt);
     } catch (err) {
-        // If exception occurred, return 500 Internal Server Error.
-        console.error('Failed to create user.', err);
-        return res.status(500).send('Failed to create user.');
+        // If exception occurred, return 500 - Internal Server Error.
+        console.error('Failed to create a user.', err);
+        return res.status(500).send('Failed to create a user.');
     }
 
     // Create the new user object.
@@ -77,20 +77,20 @@ router.post('/', async (req, res) => {
     try {
         user = await user.save();
     } catch (err) {
-        // If exception occurred, return 500 Internal Server Error.
-        console.error('Failed to create user.', err);
-        return res.status(500).send('Failed to create user.');
+        // If exception occurred, return 500 - Internal Server Error.
+        console.error('Failed to create a user.', err);
+        return res.status(500).send('Failed to create a user.');
     }
 
-    // Validate user saved on the database, if not, return 400 Bad Request.
+    // Validate user saved on the database, if not, return 400 - Bad Request.
     if (!user) {
         return res.status(400).send('Failed to save the user on the database.');
     }
 
-    // After successful creation of user, create a token for the user.
+    // After successful creation of the user, create a token for the user.
     const userToken = user.generateAuthToken();
 
-    // Return some of the user properties with a auth token.
+    // Return some of the user properties with an auth token.
     res.header('x-auth-token', userToken).send({
         _id: user._id,
         name: user.name,

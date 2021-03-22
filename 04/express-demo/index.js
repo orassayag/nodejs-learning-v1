@@ -28,7 +28,7 @@ app.get('/api/courses', (req, res) => {
 });
 
 app.post('/api/courses', (req, res) => {
-    // Validate
+    // Validate.
     const { error } = validateCourse(req.body);
     if (error) {
         return res.status(400).send(error.details[0].message);
@@ -43,35 +43,35 @@ app.post('/api/courses', (req, res) => {
 });
 
 app.put('/api/courses/:id', (req, res) => {
-    // Validate the course id
+    // Validate the course Id.
     if (!req.params.id || isNaN(req.params.id)) {
-        return res.status(400).send('Invalid id');
+        return res.status(400).send('Invalid Id.');
     }
 
     let courseId = parseInt(req.params.id, 10);
 
-    // Look up the course
+    // Look up the course.
     const course = courses.find((cur) => {
         return cur.id === courseId;
     });
 
-    // If not exists, return 404
+    // If not exists, return 400 - Bad Request.
     if (!course) {
-        return res.status(404).send(`The course with the id of ${req.params.id} was not found.`);
+        return res.status(404).send(`The course with the Id of ${req.params.id} was not found.`);
     }
 
-    // Validate
+    // Validate.
     const { error } = validateCourse(req.body);
 
-    //If invalid, return 400 - Bad request
+    // If invalid, return 400 - Bad Request.
     if (error) {
         return res.status(400).send(error.details[0].message);
     }
 
-    // Update course
+    // Update the course.
     course.name = req.body.name;
 
-    // Return the updated course
+    // Return the updated course.
     courses.forEach((element, index) => {
         if (element.id === courseId) {
             courses[index] = course;
@@ -82,9 +82,9 @@ app.put('/api/courses/:id', (req, res) => {
 });
 
 app.get('/api/courses/:id', (req, res) => {
-    // Validate the course id
+    // Validate the course Id.
     if (!req.params.id || isNaN(req.params.id)) {
-        return res.status(400).send('Invalid id');
+        return res.status(400).send('Invalid Id.');
     }
 
     const courseId = parseInt(req.params.id, 10);
@@ -93,15 +93,15 @@ app.get('/api/courses/:id', (req, res) => {
     });
 
     if (!course) {
-        return res.status(404).send(`The course with the id of ${req.params.id} was not found.`);
+        return res.status(404).send(`The course with the Id of ${req.params.id} was not found.`);
     }
     res.send(course);
 });
 
 app.delete('/api/courses/:id', (req, res) => {
-    // Validate the course id
+    // Validate the course Id.
     if (!req.params.id || isNaN(req.params.id)) {
-        return res.status(400).send('Invalid id');
+        return res.status(400).send('Invalid Id.');
     }
 
     const courseId = parseInt(req.params.id, 10);
@@ -110,7 +110,7 @@ app.delete('/api/courses/:id', (req, res) => {
     });
 
     if (!course) {
-        return res.status(404).send(`The course with the id of ${req.params.id} was not found.`);
+        return res.status(404).send(`The course with the Id of ${req.params.id} was not found.`);
     }
 
     const courseIndex = courses.indexOf(course);

@@ -3,7 +3,7 @@ const {
     ValidateResult
 } = require('../helpers/validations');
 
-// Create the schema
+// Create a user schema.
 const User = mongoose.model('User', new mongoose.Schema({
     name: {
         type: String,
@@ -29,9 +29,9 @@ const User = mongoose.model('User', new mongoose.Schema({
     }
 }));
 
-// Validate the user parameters
+// Validate the user parameters.
 const validateUser = (user) => {
-    // Validate name
+    // Validate name.
     if (!user.name) {
         return new ValidateResult(false, 'Parameter name is required.');
     }
@@ -40,7 +40,7 @@ const validateUser = (user) => {
         return new ValidateResult(false, 'Invalid parameter name (Must be at least 5 and maximum 100 characters length).');
     }
 
-    // Validate email
+    // Validate email.
     if (!user.email) {
         return new ValidateResult(false, 'Parameter email is required.');
     }
@@ -54,7 +54,7 @@ const validateUser = (user) => {
         return new ValidateResult(false, 'Invalid parameter email (Not an email).');
     }
 
-    // Validate password
+    // Validate password.
     if (!user.password) {
         return new ValidateResult(false, 'Parameter password is required.');
     }

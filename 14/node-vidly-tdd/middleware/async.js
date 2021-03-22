@@ -1,12 +1,12 @@
-/* // Handle errors globally
+/* // Handle errors globally.
 module.exports = (handler) => {
-    // Check if the handler exists. If one of them missing - return 500 internal server.
+    // Check if the handler exists. If one of them is missing - return 500 - Internal Server Error.
     if (!handler) {
         console.error('No handler function provided.');
         return;
     }
 
-    // Return the new middleware function as a reference
+    // Return the new middleware function as a reference.
     return async (req, res, next) => {
         // Execute the function.
         try {

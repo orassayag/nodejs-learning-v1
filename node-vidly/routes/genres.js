@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// Genre class
+// Genre class.
 class Genre {
     constructor(id, name) {
         this.Id = id;
@@ -9,7 +9,7 @@ class Genre {
     }
 };
 
-// Genres array (Local database)
+// Genres array (Local database).
 const genres = [
     new Genre(1, 'Comedy'),
     new Genre(2, 'Crime'),
@@ -18,63 +18,63 @@ const genres = [
     new Genre(5, 'Thriller')
 ];
 
-// Get all genres
+// Get all genres.
 router.get('/', (req, res) => {
     res.send(genres);
 });
 
-// Get specific genre by id
+// Get a specific genre by Id.
 router.get('/:id', (req, res) => {
 
-    // If invalid, return 400 (Bad Request) and error message
+    // If invalid, return 400 (Bad Request) and error message.
     const validateResult = validateGenreId(req);
     if (!validateResult.IsValid) {
         return res.status(400).send(validateResult.ErrorMessage);
     }
 
-    // If genre not found, return 404 (Not found) and error message
+    // If genre is not found, return 404 (Not found) and error message.
     const genre = getGenreById(parseInt(req.params.id, 10));
     if (!genre) {
         return res.status(404).send(`Genre with the Id of ${req.params.id} was not found.`);
     }
 
-    // Return genre
+    // Return genre.
     return res.send(genre);
 });
 
-// Create new genre
+// Create a new genre.
 router.post('/', (req, res) => {
 
-    // If invalid, return 400 (Bad Request) and error message
+    // If invalid, return 400 (Bad Request) and error message.
     const validateResult = validateGenre(req);
     if (!validateResult.IsValid) {
         return res.status(400).send(validateResult.ErrorMessage);
     }
 
-    // Create new genre and push to database
+    // Create a new genre and push to the database.
     const genre = new Genre(genres.length + 1, req.body.name);
     genres.push(genre);
 
-    // Return new genre
+    // Return the new genre.
     return res.send(genre);
 });
 
-// Update genre
+// Update genre.
 router.put('/:id', (req, res) => {
 
-    // If invalid, return 400 (Bad Request) and error message
+    // If invalid, return 400 (Bad Request) and error message.
     const validateResult = validateGenre(req);
     if (!validateResult.IsValid) {
         return res.status(400).send(validateResult.ErrorMessage);
     }
 
-    // If genre not found, return 404 (Not found) and error message
+    // If genre is not found, return 404 (Not found) and error message.
     const genre = getGenreById(parseInt(req.params.id, 10));
     if (!genre) {
         return res.status(404).send(`Genre with the Id of ${req.params.id} was not found.`);
     }
 
-    // Update the specific genre and update the database
+    // Update the specific genre and update the database.
     genre.Name = req.body.name;
     genres.forEach((cur, i) => {
         if (cur.Id === genre.Id) {
@@ -82,31 +82,31 @@ router.put('/:id', (req, res) => {
         }
     });
 
-    // Return updated genre
+    // Return updated genre.
     return res.send(genre);
 });
 
-// Delete genre
+// Delete genre.
 router.delete('/:id', (req, res) => {
 
-    // If genre not found, return 404 (Not found) and error message
+    // If genre is not found, return 404 (Not found) and error message.
     const genreId = parseInt(req.params.id, 10);
     const genre = getGenreById(genreId);
     if (!genre) {
         return res.status(404).send(`Genre with the Id of ${req.params.id} was not found.`);
     }
 
-    // Get the index of the genre and remove id from the database
+    // Get the index of the genre and remove Id from the database.
     const genreIndex = getGenreIndexById(genreId);
     genres.splice(genreIndex, 1);
 
-    // Return deleted genre
+    // Return deleted genre.
     return res.send(genre);
 });
 
-// Helpers
+// Helpers.
 
-// ValidationResult class (for any result of the validation in each method)
+// ValidationResult class (for any result of the validation in each method).
 class ValidationResult {
     constructor(isValid, errorMessage) {
         this.IsValid = isValid;
@@ -114,21 +114,21 @@ class ValidationResult {
     }
 }
 
-// Get the genre by the id
+// Get the genre by the Id.
 const getGenreById = (id) => {
     return genres.find((cur) => {
         return cur.Id === id;
     });
 };
 
-// Get the genre index in the array by the id
+// Get the genre index in the array by the Id.
 const getGenreIndexById = (id) => {
     return genres.findIndex((cur) => {
         return cur.Id === id;
     });
 };
 
-// Validate genre by request body parameters
+// Validate genre by request body parameters.
 const validateGenre = (req) => {
     if (!req || !req.body.name) {
         return new ValidationResult(false, 'No request exists or no genre name was provided.');
@@ -140,14 +140,14 @@ const validateGenre = (req) => {
     return new ValidationResult(true, null);
 };
 
-// Validate genre id by request parameters
+// Validate genre Id by request parameters.
 const validateGenreId = (req) => {
     if (!req || !req.params.id) {
-        return new ValidationResult(false, 'No request exists or no genre id was provided.');
+        return new ValidationResult(false, 'No request exists or no genre Id was provided.');
     }
 
     if (isNaN(req.params.id)) {
-        return new ValidationResult(false, 'Invalid genre id.');
+        return new ValidationResult(false, 'Invalid genre Id.');
     }
     return new ValidationResult(true, null);
 }

@@ -3,7 +3,7 @@ const {
     ValidateResult
 } = require('../helpers/validations');
 
-// Create movie schema
+// Create a movie schema.
 const Movie = mongoose.model('movie', new mongoose.Schema({
     title: {
         type: String,
@@ -32,22 +32,22 @@ const Movie = mongoose.model('movie', new mongoose.Schema({
     }
 }));
 
-// Validate the movie id
+// Validate the movie Id.
 const validateMovieId = (id) => {
     if (!id) {
-        return new ValidateResult(false, 'No id sent.');
+        return new ValidateResult(false, 'No Id sent.');
     }
     return new ValidateResult(true, null);
 }
 
-// Validate the movie parameters
+// Validate the movie parameters.
 const validateMovie = (movie) => {
-    // Validate genreId
+    // Validate genreId.
     if (!movie.genreId) {
         return new ValidateResult(false, 'Parameter genreId is required.');
     }
 
-    // Validate title
+    // Validate title.
     if (!movie.title) {
         return new ValidateResult(false, 'Parameter title is required.');
     }
@@ -56,7 +56,7 @@ const validateMovie = (movie) => {
         return new ValidateResult(false, 'Invalid parameter title (Must be at least 5 and maximum 255 characters length).');
     }
 
-    // Validate numberInStock
+    // Validate numberInStock.
     if (!movie.numberInStock) {
         return new ValidateResult(false, 'Parameter numberInStock is required.');
     }
@@ -70,7 +70,7 @@ const validateMovie = (movie) => {
         return new ValidateResult(false, 'Invalid parameter numberInStock (Must be at least 0 and maximum 255).');
     }
 
-    // Validate dailyRentalRate
+    // Validate dailyRentalRate.
     if (!movie.dailyRentalRate) {
         return new ValidateResult(false, 'Parameter dailyRentalRate is required.');
     }

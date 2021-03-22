@@ -21,34 +21,34 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Create rental and return it.
+// Create a rental and return it.
 router.post('/', async (req, res) => {
 
-    //If invalid rental parameters, return 400 Bad Request.
+    // If invalid rental parameters, return 400 - Bad Request.
     const validateRentalResult = validateRequestRental(req);
     if (!validateRentalResult.isValid) {
         return res.status(400).send(validateRentalResult.errorMessage);
     }
 
-    // Get the movie of the rental by the id.
+    // Get the movie of the rental by the Id.
     const movie = await Movie.findById(req.body.movieId);
 
-    // Validate movie exists on the database, if not, return 400 Bad Request.
+    // Validate movie exists on the database, if not, return 400 - Bad Request.
     if (!movie) {
-        return res.status(400).send(`Movie not found (id: ${req.body.movieId.trim()}) on the database.`);
+        return res.status(400).send(`Movie not found (Id: ${req.body.movieId.trim()}) on the database.`);
     }
 
-    // Check if movie available to be rental, by the number in stock, if not, return 400 Bad Request.
+    // Check if the movie is available to be rental, by the number in stock, if not, return 400 - Bad Request.
     if (movie.numberInStock === 0) {
         return res.status(400).send(`Movie ${movie.title} is out of stock.`);
     }
 
-    // Get the customer of the rental by the id.
+    // Get the customer of the rental by the Id.
     const customer = await Customer.findById(req.body.customerId);
 
-    // Validate customer exists on the database, if not, return 400 Bad Request.
+    // Validate customer exists on the database, if not, return 400 - Bad Request.
     if (!customer) {
-        return res.status(400).send(`Customer not found (id: ${req.body.customerId.trim()}) on the database.`);
+        return res.status(400).send(`Customer not found (Id: ${req.body.customerId.trim()}) on the database.`);
     }
 
     let rental;
@@ -83,7 +83,7 @@ router.post('/', async (req, res) => {
             })
             .run();
 
-        // Return new rental.
+        // Return a new rental.
         return res.send(rental);
     } catch (err) {
         console.error('Failed to create the rental.', err);

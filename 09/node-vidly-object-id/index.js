@@ -7,7 +7,7 @@ const users = require('./routes/users');
 const mongoose = require('mongoose');
 require('dotenv');
 
-// Connect to the database server
+// Connect to the database server.
 mongoose.connect('mongodb://localhost:27017/vidly', {
     useNewUrlParser: true
 })
@@ -18,7 +18,7 @@ mongoose.connect('mongodb://localhost:27017/vidly', {
         console.error('Could not connect to MongoDB...', err);
     });
 
-// Set up the express
+// Set up the express.
 const app = express();
 app.use(express.json());
 app.use('/api/genres', genres);
@@ -27,7 +27,7 @@ app.use('/api/movies', movies);
 app.use('/api/rentals', rentals);
 app.use('/api/users', users);
 
-// Listen to the server
+// Listen to the server.
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Listening to port ${port}...`);
