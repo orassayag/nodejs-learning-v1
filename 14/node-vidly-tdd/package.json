@@ -1,7 +1,12 @@
 {
   "name": "node-vidly-tdd",
   "version": "1.0.0",
+  "private": false,
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/orassayag/nodejs-learning-v1.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose"

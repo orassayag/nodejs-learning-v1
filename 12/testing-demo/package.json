@@ -1,7 +1,12 @@
 {
   "name": "testing-demo",
   "version": "1.0.0",
+  "private": false,
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/orassayag/nodejs-learning-v1.git"
+  },
   "main": "db.js",
   "directories": {
     "test": "tests"
