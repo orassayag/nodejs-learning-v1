@@ -1,15 +1,16 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/playground', {
-  useNewUrlParser: true
-})
+mongoose
+  .connect('mongodb://localhost:27017/playground', {
+    useNewUrlParser: true,
+  })
   .then(() => console.log('Connected to MongoDB...'))
-  .catch(err => console.error('Could not connect to MongoDB...', err));
+  .catch((err) => console.error('Could not connect to MongoDB...', err));
 
 const authorSchema = new mongoose.Schema({
   name: String,
   bio: String,
-  website: String
+  website: String,
 });
 
 const Author = mongoose.model('Author', authorSchema);
@@ -27,21 +28,23 @@ const Author = mongoose.model('Author', authorSchema);
   }
 })); */
 
-const Course = mongoose.model('Course', new mongoose.Schema({
-  name: String,
-  authors: [authorSchema]
-}));
+const Course = mongoose.model(
+  'Course',
+  new mongoose.Schema({
+    name: String,
+    authors: [authorSchema],
+  })
+);
 
 async function createCourse(name, authors) {
   const course = new Course({
     name,
-    authors
+    authors,
   });
 
   const result = await course.save();
   console.log(result);
 }
-
 
 /* async function createCourse(name, author) {
   const course = new Course({
@@ -58,12 +61,11 @@ async function listCourses() {
   console.log(courses);
 }
 
-const updateAuthor = async (courseId,) => {
+const updateAuthor = async (courseId) => {
   /*   // 5b45dad90d2bc321916ad9ae
     const course = await Course.findById(courseId);
     course.author.name = 'Or Assayag';
     course.save(); */
-
 
   /*     // 5b45dad90d2bc321916ad9ae
       const course = await Course.update({ _id: courseId }, {
@@ -72,16 +74,18 @@ const updateAuthor = async (courseId,) => {
         }
       }); */
 
-
   // 5b45dad90d2bc321916ad9ae
-  const course = await Course.update({
-    _id: courseId
-  }, {
-    $unset: {
-      'author': ''
+  const course = await Course.update(
+    {
+      _id: courseId,
+    },
+    {
+      $unset: {
+        author: '',
+      },
     }
-  });
-}
+  );
+};
 
 const addAuthor = async (courseId, author) => {
   const course = await Course.findById(courseId);

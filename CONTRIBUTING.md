@@ -9,6 +9,7 @@ Everyone is welcome to contribute to this project. Contributing doesn't just mea
 ### Reporting Issues
 
 If you find a bug or have a feature request:
+
 1. Check if the issue already exists in the [GitHub Issues](https://github.com/orassayag/nodejs-learning-v1/issues)
 2. If not, create a new issue with:
    - Clear title and description
@@ -31,12 +32,14 @@ If you find a bug or have a feature request:
 ### Code Style Guidelines
 
 This project follows Node.js and Express.js best practices:
+
 - Use **ES6+ JavaScript** features where appropriate
 - Follow **consistent naming conventions**
 - Keep functions small and focused
 - Use **meaningful variable names**
 
 Before submitting:
+
 ```bash
 # Install dependencies in the relevant chapter folder
 npm install
@@ -57,6 +60,7 @@ npm start
 ### Adding New Examples
 
 When adding new examples or chapters:
+
 1. Create a new numbered folder (e.g., `16/`)
 2. Include a `package.json` with dependencies
 3. Add a README or comments explaining the concepts demonstrated
@@ -66,6 +70,7 @@ When adding new examples or chapters:
 ### Chapter Structure
 
 Each chapter should follow this structure:
+
 ```
 XX/
 ├── package.json
@@ -80,9 +85,9 @@ XX/
 
 Please feel free to contact me with any question, comment, pull-request, issue, or any other thing you have in mind.
 
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 Thank you for contributing! 🙏

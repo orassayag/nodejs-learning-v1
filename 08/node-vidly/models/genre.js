@@ -2,35 +2,41 @@ const mongoose = require('mongoose');
 const { ValidateResult } = require('../helpers/validations');
 
 // Create a genre schema.
-const Genre = mongoose.model('Genre', new mongoose.Schema({
+const Genre = mongoose.model(
+  'Genre',
+  new mongoose.Schema({
     name: {
-        type: String,
-        require: true,
-        minlength: 5,
-        maxlength: 50,
-        trim: true
-    }
-}));
+      type: String,
+      require: true,
+      minlength: 5,
+      maxlength: 50,
+      trim: true,
+    },
+  })
+);
 
 // Validate the genre Id.
 const validateGenreId = (id) => {
-    if (!id) {
-        return new ValidateResult(false, 'No Id sent.');
-    }
-    return new ValidateResult(true, null);
-}
+  if (!id) {
+    return new ValidateResult(false, 'No Id sent.');
+  }
+  return new ValidateResult(true, null);
+};
 
 // Validate the genre parameters.
 const validateGenre = (genre) => {
-    // Validate name.
-    if (!genre.name) {
-        return new ValidateResult(false, 'Parameter name is required.');
-    }
+  // Validate name.
+  if (!genre.name) {
+    return new ValidateResult(false, 'Parameter name is required.');
+  }
 
-    if (genre.length < 5 || genre.length > 50) {
-        return new ValidateResult(false, 'Invalid parameter name (Must be at least 6 and maximum 50 characters length).');
-    }
-    return new ValidateResult(true, null);
+  if (genre.length < 5 || genre.length > 50) {
+    return new ValidateResult(
+      false,
+      'Invalid parameter name (Must be at least 6 and maximum 50 characters length).'
+    );
+  }
+  return new ValidateResult(true, null);
 };
 
 module.exports.Genre = Genre;

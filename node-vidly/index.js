@@ -10,5 +10,5 @@ app.use('/api/genres', genres);
 // Listen to the server.
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`Listening to port ${port}...`);
+  console.log(`Listening to port ${port}...`);
 });

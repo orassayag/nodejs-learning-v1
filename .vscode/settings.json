@@ -1,24 +1,31 @@
 {
-    "cSpell.words": [
-        "Assayag",
-        "Aviad",
-        "BRDA",
-        "Denormalization",
-        "FNDA",
-        "Hamedani",
-        "Vercel",
-        "cbranch",
-        "cstat",
-        "ental",
-        "fstat",
-        "genr",
-        "linenums",
-        "moongose",
-        "orassayag",
-        "ovie",
-        "repos",
-        "ustomer",
-        "vidly",
-        "vidlyuser"
-    ]
+  "cSpell.words": [
+    "Assayag",
+    "Aviad",
+    "BRDA",
+    "Denormalization",
+    "FNDA",
+    "Hamedani",
+    "Vercel",
+    "cbranch",
+    "cstat",
+    "ental",
+    "fstat",
+    "genr",
+    "linenums",
+    "moongose",
+    "orassayag",
+    "ovie",
+    "repos",
+    "ustomer",
+    "vidly",
+    "vidlyuser"
+  ],
+  "cSpell.ignorePaths": [
+    "coverage",
+    "node_modules",
+    "dist",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml"
+  ]
 }

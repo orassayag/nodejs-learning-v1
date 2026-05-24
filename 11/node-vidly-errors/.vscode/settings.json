@@ -1,4 +1,4 @@
 {
-    "eslint.trace.server": "messages",
-    "eslint.alwaysShowStatus": true
+  "eslint.trace.server": "messages",
+  "eslint.alwaysShowStatus": true
 }

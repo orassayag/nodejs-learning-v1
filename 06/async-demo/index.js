@@ -1,45 +1,45 @@
 const getUser = (id) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            console.log('Reading a user from a database...');
-            resolve({
-                id: id,
-                gitHubUsername: 'Or'
-            });
-        }, 2000);
-    });
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('Reading a user from a database...');
+      resolve({
+        id: id,
+        gitHubUsername: 'Or',
+      });
+    }, 2000);
+  });
 };
 
 const getRepositories = (username) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            console.log('Reading a user from a database...');
-            resolve(['repo1', 'repo2', 'repo3']);
-        }, 2000);
-    });
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('Reading a user from a database...');
+      resolve(['repo1', 'repo2', 'repo3']);
+    }, 2000);
+  });
 };
 
 const getCommits = (repo) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            console.log('Reading a user from a database...');
-            reject(new Error('message'));
-        }, 2000);
-    });
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('Reading a user from a database...');
+      reject(new Error('message'));
+    }, 2000);
+  });
 };
 
 const displayCommits = async () => {
-    try {
-        const user = await getUser(1);
-        const repositories = await getRepositories(user.gitHubUsername);
-        const commits = await getCommits(repositories[0]);
-        console.log(commits);
-    } catch (err) {
-        console.log(err);
-    }
+  try {
+    const user = await getUser(1);
+    const repositories = await getRepositories(user.gitHubUsername);
+    const commits = await getCommits(repositories[0]);
+    console.log(commits);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-console.log('Before')
+console.log('Before');
 displayCommits();
 console.log('After');
 
@@ -59,9 +59,6 @@ getUser(1)
         console.log('Error', err.message);
     });
 console.log('After'); */
-
-
-
 
 /* const getUser = (id, callback) => {
     setTimeout(() => {

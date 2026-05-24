@@ -5,7 +5,7 @@ const getCustomer = (id) => {
         id: 1,
         name: 'Mosh Hamedani',
         isGold: true,
-        email: 'email'
+        email: 'email',
       });
     }, 4000);
   });
@@ -38,8 +38,6 @@ const displayCustomer = async () => {
   }
 };
 displayCustomer();
-
-
 
 /*
 getCustomer(1, (customer) => {

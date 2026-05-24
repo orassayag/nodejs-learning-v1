@@ -17,9 +17,11 @@ app.set('view engine', 'pug');
 app.set('views', './views');
 
 app.use(express.json());
-app.use(express.urlencoded({
-    extended: true
-}));
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 app.use(express.static('public'));
 app.use(helmet());
 app.use('/api/courses', courses);
@@ -30,8 +32,8 @@ console.log(`Mail Server: ${config.get('mail.host')}`);
 console.log(`Mail Password: ${config.get('mail.password')}`); */
 
 if (environment === 'development') {
-    app.use(morgan('tiny'));
-    startupDebugger('Morgan enabled...');
+  app.use(morgan('tiny'));
+  startupDebugger('Morgan enabled...');
 }
 
 dbDebugger('Connected to the db...');
@@ -40,12 +42,10 @@ app.use(logger);
 
 app.use(login);
 
-
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`Listening on port ${port}...`);
+  console.log(`Listening on port ${port}...`);
 });
-
 
 /* const helmet = require('helmet');
 const express = require('express');

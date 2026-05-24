@@ -1,83 +1,87 @@
 const mongoose = require('mongoose');
-const {
-    ValidateResult
-} = require('../helpers/validations');
+const { ValidateResult } = require('../helpers/validations');
 
 // Create a rental schema.
-const Rental = mongoose.model('Rental', new mongoose.Schema({
+const Rental = mongoose.model(
+  'Rental',
+  new mongoose.Schema({
     customer: {
-        type: new mongoose.Schema({
-            name: {
-                type: String,
-                required: true,
-                minlength: 5,
-                maxlength: 50
-            },
-            isGold: {
-                type: Boolean,
-                default: false,
-            },
-            phone: {
-                type: String,
-                required: true,
-                minlength: 5,
-                maxlength: 50
-            }
-        }),
-        required: true
+      type: new mongoose.Schema({
+        name: {
+          type: String,
+          required: true,
+          minlength: 5,
+          maxlength: 50,
+        },
+        isGold: {
+          type: Boolean,
+          default: false,
+        },
+        phone: {
+          type: String,
+          required: true,
+          minlength: 5,
+          maxlength: 50,
+        },
+      }),
+      required: true,
     },
     movie: {
-        type: new mongoose.Schema({
-            title: {
-                type: String,
-                required: true,
-                trim: true,
-                minlength: 5,
-                maxlength: 255
-            },
-            dailyRentalRate: {
-                type: Number,
-                required: true,
-                min: 0,
-                max: 255
-            }
-        }),
-        required: true
+      type: new mongoose.Schema({
+        title: {
+          type: String,
+          required: true,
+          trim: true,
+          minlength: 5,
+          maxlength: 255,
+        },
+        dailyRentalRate: {
+          type: Number,
+          required: true,
+          min: 0,
+          max: 255,
+        },
+      }),
+      required: true,
     },
     dateOut: {
-        type: Date,
-        required: true,
-        default: Date.now
+      type: Date,
+      required: true,
+      default: Date.now,
     },
     dateReturned: {
-        type: Number
+      type: Number,
     },
     rentalFee: {
-        type: Number,
-        min: 0
-    }
-}));
+      type: Number,
+      min: 0,
+    },
+  })
+);
 
 // Validate the rental parameters.
 const validateRental = (rental) => {
-    // Validate customerId.
-    if (!rental.customerId) {
-        return new ValidateResult(false, 'Parameter customerId is required.');
-    }
+  // Validate customerId.
+  if (!rental.customerId) {
+    return new ValidateResult(false, 'Parameter customerId is required.');
+  }
 
-    if (!mongoose.Types.ObjectId.isValid(rental.customerId)) {
-        return new ValidateResult(false, `Invalid customer Id ${rental.customerId}.`);
-    }
+  if (!mongoose.Types.ObjectId.isValid(rental.customerId)) {
+    return new ValidateResult(
+      false,
+      `Invalid customer Id ${rental.customerId}.`
+    );
+  }
 
-    // Validate movieId.
-    if (!rental.movieId) {
-        return new ValidateResult(false, 'Parameter movieId is required.');
-    }
+  // Validate movieId.
+  if (!rental.movieId) {
+    return new ValidateResult(false, 'Parameter movieId is required.');
+  }
 
-    if (!mongoose.Types.ObjectId.isValid(rental.movieId)) {
-        return new ValidateResult(false, `Invalid movie Id ${rental.movieId}.`);
-    }
-    return new ValidateResult(true, null);
+  if (!mongoose.Types.ObjectId.isValid(rental.movieId)) {
+    return new ValidateResult(false, `Invalid movie Id ${rental.movieId}.`);
+  }
+  return new ValidateResult(true, null);
 };
 
 module.exports.Rental = Rental;

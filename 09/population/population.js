@@ -1,30 +1,37 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/playground', {
-  useNewUrlParser: true
-})
+mongoose
+  .connect('mongodb://localhost:27017/playground', {
+    useNewUrlParser: true,
+  })
   .then(() => console.log('Connected to MongoDB...'))
-  .catch(err => console.error('Could not connect to MongoDB...', err));
+  .catch((err) => console.error('Could not connect to MongoDB...', err));
 
-const Author = mongoose.model('Author', new mongoose.Schema({
-  name: String,
-  bio: String,
-  website: String
-}));
+const Author = mongoose.model(
+  'Author',
+  new mongoose.Schema({
+    name: String,
+    bio: String,
+    website: String,
+  })
+);
 
-const Course = mongoose.model('Course', new mongoose.Schema({
-  name: String,
-  author: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Author'
-  }
-}));
+const Course = mongoose.model(
+  'Course',
+  new mongoose.Schema({
+    name: String,
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Author',
+    },
+  })
+);
 
 async function createAuthor(name, bio, website) {
   const author = new Author({
     name,
     bio,
-    website
+    website,
   });
 
   const result = await author.save();
@@ -34,7 +41,7 @@ async function createAuthor(name, bio, website) {
 async function createCourse(name, author) {
   const course = new Course({
     name,
-    author
+    author,
   });
 
   const result = await course.save();
@@ -42,8 +49,7 @@ async function createCourse(name, author) {
 }
 
 async function listCourses() {
-  const courses = await Course
-    .find()
+  const courses = await Course.find()
     .populate('author', 'name -_id')
     //.populate('category', 'name')
     .select('name author');

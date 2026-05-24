@@ -3,30 +3,30 @@
 // Using References (Normalization) -> CONSISTENCY.
 
 let author = {
-    name: 'mosh'
+  name: 'mosh',
 };
 
 let course = {
-    author: 'id'
+  author: 'id',
 };
 
 // Using Embedded Documents (Denormalization) -> PERFORMANCE.
 
 let course = {
-    author: {
-        name: 'Mosh'
-    }
+  author: {
+    name: 'Mosh',
+  },
 };
 
 // Hybrid.
 let author = {
-    name: 'Mosh',
-    // 50 other properties.
+  name: 'Mosh',
+  // 50 other properties.
 };
 
 let course = {
-    author: {
-        id: 'ref',
-        name: 'Mosh'
-    }
+  author: {
+    id: 'ref',
+    name: 'Mosh',
+  },
 };

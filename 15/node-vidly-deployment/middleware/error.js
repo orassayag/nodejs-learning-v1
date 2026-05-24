@@ -1,21 +1,20 @@
 const winston = require('winston');
 
 // Error handling middleware.
-module.exports = ((err, req, res, next) => {
-    if (err) {
-        winston.error(err.message, err);
-    }
+module.exports = (err, req, res, next) => {
+  if (err) {
+    winston.error(err.message, err);
+  }
 
-    // If exception occurred, return 500 - Internal Server Error.
-    return res.status(500).send('Something went wrong.');
-});
+  // If exception occurred, return 500 - Internal Server Error.
+  return res.status(500).send('Something went wrong.');
+};
 
 // error
 // warn
 // info
 // verbose
 // debug
-// silly
 
 /* const logger = expandErrors(winston.createLogger({
     level: 'error',
